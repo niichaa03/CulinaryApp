@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="navColor">#ffc14d</color>
+    <color name="textColor">#FF875904</color>
+    <color name="cv_bg_favorite">#ffa000</color>
+    <color name="bg_summary">#fdd835</color>
+    <color name="spoon_text">#ff2a7e2f</color>
+    <color name="source">#83d8fc</color>
+    <color name="source_text">#1873D4</color>
+<!--    <color name="source_text">#83d8fc</color>-->
+<!--    <color name="source">#61bffa</color>-->
+</resources>
