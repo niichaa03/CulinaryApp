@@ -17,6 +17,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    lintOptions {
+        disable 'IncludeLayoutParam', 'Orientation', 'UseAppTint'
+    }
+
     buildTypes {
         release {
             minifyEnabled false

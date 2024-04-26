@@ -1,14 +1,10 @@
 <resources>
     <string name="app_name">Culinary App</string>
-    <string name="errorMessage">Sorry... Maybe Something Wrong :(</string>
-    <string name="text">Welcome To Culinary!</string>
+    <string name="errorMessage">Sorry, Maybe Something Wrong :(</string>
     <string name="summary_text">Summary</string>
     <string name="source">Source</string>
     <string name="spoonacular_source">Spoonacular Source</string>
-    <string name="dark_theme">Dark Theme</string>
-    <string name="enabled_dark_theme">enable dark theme</string>
     <string name="home_nav">Home</string>
-    <string name="favorite_nav">Favorite</string>
     <string name="favorite">Favorite</string>
     <string name="setting_nav">Setting</string>
     <string name="title_favorite">Favorite</string>
