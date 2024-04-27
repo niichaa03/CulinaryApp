@@ -34,7 +34,7 @@ android {
         targetCompatibility JavaVersion.VERSION_11
     }
     lintOptions {
-        disable 'IncludeLayoutParam', 'Orientation', 'UseAppTint'
+        disable 'UnusedIds'
     }
     kotlinOptions {
         jvmTarget = '11'

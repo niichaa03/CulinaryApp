@@ -9,7 +9,7 @@
     <item
         android:id="@+id/favoriteFragment"
         android:icon="@drawable/ic_favorite_nav"
-        android:title="@string/favorite" />
+        android:title="@string/title_favorite" />
 
     <item
         android:id="@+id/settingFragment"

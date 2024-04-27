@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.recyclerview.widget.GridLayoutManager
 import com.niichaa.core.data.Resource
+import com.niichaa.core.domain.model.Culinary
 import com.niichaa.core.ui.CulinaryAdapter
 import com.niichaa.culinaryapp.R
 import com.niichaa.culinaryapp.databinding.FragmentHomeBinding
@@ -34,21 +35,19 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        if (activity != null) {
-            val culinaryAdapter =  CulinaryAdapter()
-            culinaryAdapter.onItemClick = {
-                val intent = Intent(activity, DetailCulinaryActivity::class.java)
-                intent.putExtra(DetailCulinaryActivity.EXTRA_DATA, it)
-                startActivity(intent)
-            }
+        val layoutManager = GridLayoutManager(requireActivity(), 2)
+        binding.rvCulinary.layoutManager = layoutManager
+        binding.rvCulinary.setHasFixedSize(true)
 
-            homeViewModel.culinary.observe(viewLifecycleOwner) {
+        homeViewModel.culinary.observe(viewLifecycleOwner) {
                 if (it != null) {
                     when(it) {
                         is Resource.Loading -> binding.progressBar.visibility = View.VISIBLE
                         is Resource.Success -> {
                             binding.progressBar.visibility = View.GONE
-                            culinaryAdapter.setCulinary(it.data)
+                            it.data?.let { culinary ->
+                                setCulinary(culinary)
+                            }
                         }
                         is Resource.Error -> {
                             binding.progressBar.visibility= View.GONE
@@ -59,15 +58,19 @@ class HomeFragment : Fragment() {
                 }
             }
 
-            with(binding.rvCulinary){
-                layoutManager = GridLayoutManager(requireActivity(), 2)
-                setHasFixedSize(true)
-                adapter = culinaryAdapter
-            }
-
-        }
     }
 
+    private fun setCulinary(culinary: List<Culinary>) {
+        val adapter = CulinaryAdapter(culinary)
+        adapter.setOnItemClickCallback(object : CulinaryAdapter.OnItemClickCallback{
+            override fun onItemClicked(culinary: Culinary) {
+                val intent = Intent(activity, DetailCulinaryActivity::class.java)
+                intent.putExtra(DetailCulinaryActivity.EXTRA_DATA, culinary)
+                startActivity(intent)
+            }
+        })
+        binding.rvCulinary.adapter = adapter
+    }
 
     override fun onDestroyView() {
         super.onDestroyView()
